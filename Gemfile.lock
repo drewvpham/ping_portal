@@ -101,6 +101,8 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_or (1.1.5)
+      activerecord (>= 3)
     railties (4.2.7)
       actionpack (= 4.2.7)
       activesupport (= 4.2.7)
@@ -156,6 +158,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.2.7)
+  rails_or
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring

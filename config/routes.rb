@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :games
+  resources :messages
   resources :users, :sessions
   root 'users#new'
   delete 'sessions/:id' =>'sessions#destroy'
