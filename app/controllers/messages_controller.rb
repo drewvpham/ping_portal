@@ -1,19 +1,22 @@
 class MessagesController < ApplicationController
 
-
+  def index
+    @messages=Message.all
+    @users=User.all
+  end
   def new
     @message = Message.new
     @recipient = User.find(params[:user_id])
   end
 
   def create
-    @message = Message.new(message_params.merge(user_id: current_user.id, recipient_id: params[:id]))
+    @message = Message.create(message_params.merge(user_id: current_user.id))
     if @message.save
       flash[:success] = "Your message has been sent!"
-      redirect_to users_path
+      redirect_to messages_path
     else
       flash[:failure] = "Please try again."
-      redirect_to users_path
+      redirect_to messages_path
     end
   end
 
