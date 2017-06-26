@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :user_logged_in, only: [:new]
 def index
   @messages = Message.where(recipient_id = session[:user_id])
+  @current_user_id = session[:user_id]
 end
 
 def create
