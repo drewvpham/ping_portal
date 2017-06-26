@@ -1,1 +1,11 @@
-homee
+<h1>Hi <%= current_user.username %> </h1>
+
+<p>Your Rank:</p>
+
+<h2>Recent Messages Received:</h2>
+<% @messages.each do |message| %>
+  <p> <%= message.content %> </p>
+  <p> <%= message.user_id %> </p>
+<% end %>
+
+<a href="/messages">Send a Message</a>

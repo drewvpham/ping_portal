@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, :sessions
   root 'users#new'
   delete 'sessions/:id' =>'sessions#destroy'
-
+  get '/home' => 'users#index'
   post '/sessions' => 'sessions#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
