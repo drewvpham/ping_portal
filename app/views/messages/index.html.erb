@@ -1,4 +1,7 @@
 
+<a href="/sessions/<%= @current_user_id %>" data-method="delete">Logout</a>
+
+<div></div>
 
 <%@messages.each do |message|%>
   <p><%=User.where(id: message.user_id).first.username%> says <%=message.content%> to <%=User.where(id: message.recipient_id).first.username%></p>

@@ -3,6 +3,7 @@ class MessagesController < ApplicationController
   def index
     @messages=Message.all
     @users=User.all
+    @current_user_id = session[:user_id]
   end
   def new
     @message = Message.new
