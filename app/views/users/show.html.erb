@@ -1,1 +1,22 @@
 <%=@user.username%>
+
+<h3>Leave a message:</h3>
+   <form action='/messages' method='post'>
+     <input type='hidden' name='authenticity_token' value="<%=form_authenticity_token%>">
+     <div>
+       <textarea rows="4" cols="50" name='message[content]'></textarea>
+     </div>
+
+
+
+     <input type='submit' value='Submit'>
+   </form>
+
+
+  <%@user.all_games.each do |game|%>
+    <p><%=game.player_1.username%> vs <%=game.player_2.username%> @ <%=game.time%></p>
+
+  <%end%>
+
+
+<p class='errors'><%= flash[:login_error]%>
