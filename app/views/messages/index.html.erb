@@ -1,0 +1,28 @@
+
+
+<%@messages.each do |message|%>
+  <p><%=User.where(id: message.user_id).first.username%> says <%=message.content%> to <%=User.where(id: message.recipient_id).first.username%></p>
+<%end%>
+
+
+<h3>Leave a new message:</h3>
+   <form action='/messages' method='post'>
+     <input type='hidden' name='authenticity_token' value="<%=form_authenticity_token%>">
+     <div>
+       <textarea rows="4" cols="50" name='message[content]'></textarea>
+     </div>
+
+     <label>Please select a recipient</label>
+     <select name="message[recipient_id]">
+       <%@users.each do |user|%>
+       <%if user.id !=session[:user_id]%>
+      <option value="<%=user.id%>"><%=user.username%></option>
+      <%end%>
+      <%end%>
+
+    </select>
+
+
+
+     <input type='submit' value='Submit'>
+   </form>

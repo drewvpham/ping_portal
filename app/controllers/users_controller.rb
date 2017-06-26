@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :edit, :delete]
+  before_action :set_user, only: [:update, :edit, :delete]
   before_action :user_authorized, only: [:show]
   before_action :user_logged_in, only: [:new]
 def index
@@ -25,6 +25,7 @@ def update
 end
 
 def show
+  @user=User.find(params[:id])
   @messages=Message.find_by(user_id: session[:user_id])
   @users=User.all
 end
