@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users, :sessions
   root 'users#new'
   delete 'sessions/:id' =>'sessions#destroy'
 
