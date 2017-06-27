@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   helper_method :user_authorized
 
   def user_logged_in
-    redirect_to users_path if session[:user_id]
+    redirect_to '/home' if session[:user_id]
   end
 
   def update_authorization
