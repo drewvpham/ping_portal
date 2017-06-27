@@ -1,6 +1,8 @@
 class GamesController < ApplicationController
   def new
     @game=Game.new
+    @user=User.find(session[:user_id])
+    @users=User.all
   end
 
   def create
@@ -12,7 +14,6 @@ class GamesController < ApplicationController
         flash[:errors]= @game.errors.full_messages
         redirect_to :back
       end
-    end
   end
 
 
