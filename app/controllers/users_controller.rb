@@ -3,13 +3,13 @@ class UsersController < ApplicationController
   before_action :user_authorized, only: [:show]
   before_action :user_logged_in, only: [:new]
 def index
-  @messages = Message.where(recipient_id = session[:user_id])
+  @public_messages=Message.where(user: current_user, private: false).includes(:user, :recipient).or(Message.where(recipient: current_user, private: false).includes(:user, :recipient))
   @current_user_id = session[:user_id]
 end
 
 def create
   @user= User.create(user_params)
-  if @user.valid?
+  if @user.valid? && params[:invitation] == 'pingpong'
     session[:user_id]=@user.id
     redirect_to users_path
   else

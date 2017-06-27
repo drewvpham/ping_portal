@@ -1,20 +1,22 @@
 
 <h3>Request a Game</h3>
 
-<%= form_for(@game) do |f| %>
-  <%= f.label :first_name %><br>
-  <%= f.text_field :first_name %><br>
-
-  <%= f.label :last_name %><br>
-  <%= f.text_field :last_name %><br>
-
-  <%= f.label :alias %><br>
-  <%= f.text_field :alias %><br>
-
-  <%= f.label :email %><br>
-  <%= f.text_field :email %><br>
-
-
-
-  <%=f.submit%>
-<% end %>
+<form  action="/games" method="post">
+     <input type='hidden' name='authenticity_token' value="<%=form_authenticity_token%>">
+     <input type="hidden" name="game[player_1_id]" value="<%= @user.id %>">
+     <label>Who do you want to play against?</label>
+     <div>
+     <select name="game[player_2_id]">
+       <%@users.each do |user|%>
+       <%if user.id !=session[:user_id]%>
+      <option value="<%=user.id%>"><%=user.username%></option>
+      <%end%>
+      <%end%>
+      <br>
+      <label>What time do you want to play?</label><br>
+      <input type="datetime-local" name="game[time]"><br>
+      <label>Where do you want to play?</label><br>
+      <input type="radio" name="game[location]" value="dojo" checked> Dojo Game Room<br>
+      <input type="radio" name="game[location]" value="downstairs"> Downstairs Lounge<br>
+      <input type="submit" value="Send your challenge!">
+</form>

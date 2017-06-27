@@ -3,8 +3,10 @@
 <p>Your Rank:</p>
 
 <h2>Recent Public Messages</h2>
-<% @messages.each do |message| %>
+
+<% @public_messages.each do |message| %>
 	<p>To: <%= message.recipient.username %></p>
+
   <p> <%= message.content %> </p>
   <p> From: <%= message.user.username %> </p>
 <% end %>
