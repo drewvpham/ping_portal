@@ -2,7 +2,9 @@
 <h1> <%= @game.player_1.username %> Vs <%= @game.player_2.username %> </h1>
 <p> <%= @game.location %> </p>
 <p> <%= @game.time %></p>
-<p> winner: <%= @game.winner %></p>
+<% if @game.winner %>
+	<p> winner: <%= @game.winner.username %></p>
+<% end %>
 <p> <%= @game.player_1_score %></p>
 <p> <%= @game.player_2_score %></p>
 
