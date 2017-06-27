@@ -11,22 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626191600) do
+ActiveRecord::Schema.define(version: 20170627202825) do
 
   create_table "games", force: :cascade do |t|
     t.integer  "player_1_score"
     t.integer  "player_2_score"
-    t.integer  "winner"
     t.datetime "time"
     t.string   "location"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "player_1_id"
     t.integer  "player_2_id"
+    t.integer  "winner_id"
   end
 
   add_index "games", ["player_1_id"], name: "index_games_on_player_1_id"
   add_index "games", ["player_2_id"], name: "index_games_on_player_2_id"
+  add_index "games", ["winner_id"], name: "index_games_on_winner_id"
 
   create_table "messages", force: :cascade do |t|
     t.integer  "user_id"
@@ -45,6 +46,10 @@ ActiveRecord::Schema.define(version: 20170626191600) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "points_for"
+    t.integer  "points_against"
+    t.integer  "wins"
+    t.integer  "losses"
   end
 
 end
