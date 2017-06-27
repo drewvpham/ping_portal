@@ -32,29 +32,12 @@ ActiveRecord::Schema.define(version: 20170626191600) do
     t.integer  "user_id"
     t.integer  "recipient_id"
     t.text     "content"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.boolean  "private",      default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   add_index "messages", ["user_id"], name: "index_messages_on_user_id"
-
-  create_table "test2s", force: :cascade do |t|
-    t.integer  "player_1_id"
-    t.integer  "player_2_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "test2s", ["player_1_id"], name: "index_test2s_on_player_1_id"
-  add_index "test2s", ["player_2_id"], name: "index_test2s_on_player_2_id"
-
-  create_table "tests", force: :cascade do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "tests", ["user_id"], name: "index_tests_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
