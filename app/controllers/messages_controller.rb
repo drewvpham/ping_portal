@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
 
   def index
-    @messages=Message.all.includes(:user, :recipient)
+    @all_messages=Message.all.includes(:user, :recipient)
     @users=User.all
     @current_user_id = session[:user_id]
   end
