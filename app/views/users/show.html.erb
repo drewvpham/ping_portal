@@ -4,7 +4,7 @@
 
 
   <%@user.all_games.each do |game|%>
-    <p><%=game.player_1.username%> vs <%=game.player_2.username%> @ <%=game.time%></p>
+    <p><%=game.player_1.username%> vs <%=game.player_2.username%> @ <%=game.time.strftime('%b %e, %l:%M %p')%></p>
 
   <%end%>
 

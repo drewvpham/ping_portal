@@ -3,7 +3,9 @@ class MessagesController < ApplicationController
   def index
     @messages=Message.all.includes(:user, :recipient)
     @users=User.all
+    @current_user_id = session[:user_id]
   end
+
   def new
     @message = Message.new
     @recipient = User.find(params[:user_id])
@@ -18,6 +20,11 @@ class MessagesController < ApplicationController
       flash[:failure] = "Please try again."
       redirect_to messages_path
     end
+  end
+
+  def destroy
+    Message.find(params[:id]).destroy
+    redirect_to :back
   end
 
   private

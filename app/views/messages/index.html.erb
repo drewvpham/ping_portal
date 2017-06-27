@@ -1,7 +1,13 @@
 
+<%=link_to 'Home', home_path%>
+<a href="/sessions/<%= @current_user_id %>" data-method="delete">Logout</a>
 
+<div></div>
+  <h3>Your Messages </h3>
 <%@messages.each do |message|%>
-  <p><%=User.where(id: message.user_id).first.username%> says <%=message.content%> to <%=User.where(id: message.recipient_id).first.username%></p>
+  <p><%=User.find(message.user_id).username%> says <%=message.content%> to <%=User.where(id: message.recipient_id).first.username%> on <%=message.created_at.strftime("%b %e, %l:%M %p")%>
+    <%= link_to 'Delete',  { action: :destroy, id: message.id }, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
 <%end%>
 
 
@@ -15,9 +21,9 @@
      <label>Please select a recipient</label>
      <select name="message[recipient_id]">
        <%@users.each do |user|%>
-       <%if user.id !=session[:user_id]%>
-      <option value="<%=user.id%>"><%=user.username%></option>
-      <%end%>
+        <%if user.id !=session[:user_id]%>
+          <option value="<%=user.id%>"><%=user.username%></option>
+        <%end%>
       <%end%>
 
     </select>
