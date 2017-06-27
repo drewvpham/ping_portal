@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   resources :games
   resources :messages
-  resources :users, :sessions
+  resources :sessions, :users
   root 'users#new'
-  delete 'sessions/:id' =>'sessions#destroy'
+  get 'sessions/:id' =>'sessions#destroy'
   get '/home' => 'users#index'
   post '/sessions' => 'sessions#create'
-
+  get "/home", to: "users#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
