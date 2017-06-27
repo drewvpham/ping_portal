@@ -3,8 +3,11 @@ class UsersController < ApplicationController
   before_action :user_authorized, only: [:show]
   before_action :user_logged_in, only: [:new]
 def index
-  @public_messages=Message.where(user: current_user, private: false).includes(:user, :recipient).or(Message.where(recipient: current_user, private: false).includes(:user, :recipient))
+  @public_messages=Message.where(private: false).includes(:user, :recipient).reverse
   @current_user_id = session[:user_id]
+end
+
+def new
 end
 
 def create

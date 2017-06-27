@@ -1,18 +1,28 @@
 <!-- update the score of the game -->
+<<<<<<< HEAD
 <h1> <%= @player_1 %> Vs <%= @player_2 %> </h1>
 <p> <%= @current_game.location %> </p>
 <p> <%= @current_game.time %></p>
 <p> <%= @current_game.player_1_score %></p>
 <p> <%= @current_game.player_2_score %></p>
 <p> <%= @current_game.winner %></p>
+=======
+<h1> <%= @game.player_1.username %> Vs <%= @game.player_2.username %> </h1>
+<p> <%= @game.location %> </p>
+<p> <%= @game.time %></p>
+<p> winner: <%= @game.winner %></p>
+<p> <%= @game.player_1_score %></p>
+<p> <%= @game.player_2_score %></p>
+
+>>>>>>> ae40bdc3bbd30bad66df07f4b370477c34699c6a
 <h1>Report the score for this game:</h1>
 <!-- game.edit function -->
-<form action="/games/<%= @current_game.id %>" method="post">
+<form action="/games/<%= @game.id %>" method="post">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 	<input type="hidden" name="_method" value="patch">
-	<label> <%= @player_1 %> Score: </label>
+	<label> <%= @game.player_1.username %> Score: </label>
 		<input type="number" name="game[player_1_score]">
-	<label> <%= @player_2 %> Score</label>
+	<label> <%= @game.player_2.username %> Score</label>
 		<input type="number" name="game[player_2_score]">
 	<input type="submit" value="Submit Score">
 </form>
