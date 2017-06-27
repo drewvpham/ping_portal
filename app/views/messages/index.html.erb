@@ -2,34 +2,37 @@
 <%=link_to 'Home', home_path%>
 <a href="/sessions/<%= @current_user_id %>" data-method="delete">Logout</a>
 
-<div></div>
-  <h3>Your Messages </h3>
-<%@private_messages.each do |message|%>
-  <p><%=message.user.username%> says <%=message.content%> to <%=message.recipient.username%> on <%=message.created_at.strftime("%b %e, %l:%M %p")%>
-    <%= link_to 'Delete',  { action: :destroy, id: message.id }, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </p>
-<%end%>
+<div class="row">
+  <div class="messages col s6">
+    <h5>Your Private Messages </h5>
+    <%@private_messages.each do |message|%>
+      <div class="col s12">
+        <div class="card-panel blue">
+        <h5> <%=message.user.username%> says to <%=message.recipient.username%> on <%=message.created_at.strftime("%b %e, %l:%M %p")%></h5>
+        <span class="white-text"><%=message.content%> </span>
+        <%= link_to 'Delete',  { action: :destroy, id: message.id }, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    <%end%> 
+  </div>
 
-
-<h3>Leave a new message:</h3>
-   <form action='/messages' method='post'>
-     <input type='hidden' name='authenticity_token' value="<%=form_authenticity_token%>">
-     <input type='hidden' name='message[private]' value="true">
-     <div>
-       <textarea rows="4" cols="50" name='message[content]'></textarea>
-     </div>
-
-     <label>Please select a recipient</label>
-     <select name="message[recipient_id]">
-       <%@users.each do |user|%>
+<div class="col s6">
+  <h3>Send a new private message:</h3>
+  <form action='/messages' method='post'>
+    <input type='hidden' name='authenticity_token' value="<%=form_authenticity_token%>">
+    <input type='hidden' name='message[private]' value="true">
+    <div>
+      <textarea rows="4" cols="50" name='message[content]'></textarea>
+    </div>
+    <label>Please select a recipient</label>
+    <select class="browser-default" name="message[recipient_id]">
+      <%@users.each do |user|%>
         <%if user.id !=session[:user_id]%>
           <option value="<%=user.id%>"><%=user.username%></option>
         <%end%>
       <%end%>
-
     </select>
-
-
-
-     <input type='submit' value='Submit'>
-   </form>
+    <input type='submit' value='Submit'>
+  </form>
+  </div>
+</div>

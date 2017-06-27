@@ -1,43 +1,50 @@
 
-<h3>Register</h3>
-<%= form_tag users_path do %>
-  <label>Username:</label><br>
-  <%= text_field_tag :'user[username]' %><br>
+  <div class="header">
+    <h1>Welcome to the Ping Portal!</h1>
+  </div>
+<div>
+  <h3>Register</h3>
+  <%= form_tag users_path do %>
+    <label>Username:</label><br>
+    <%= text_field_tag :'user[username]' %><br>
 
-  <label>Email:</label><br>
-  <%= text_field_tag :'user[email]' %><br>
+    <label>Email:</label><br>
+    <%= text_field_tag :'user[email]' %><br>
 
-  <label>Password:</label><br>
-  <%= password_field_tag :'user[password]' %><br>
+    <label>Password:</label><br>
+    <%= password_field_tag :'user[password]' %><br>
 
-  <label>Password Confirmation:</label><br>
-  <%= password_field_tag :'user[password_confirmation]' %><br>
+    <label>Password Confirmation:</label><br>
+    <%= password_field_tag :'user[password_confirmation]' %><br>
 
-  <label>Invitation Code:</label><br>
-  <input type="password" name="invitation">
+    <label>Invitation Code:</label><br>
+    <input type="password" name="invitation">
 
-  <%= submit_tag "Register" %>
-<% end %>
+    <%= submit_tag "Register" %>
+  <% end %>
 
 
+  <div class="errors">
+      <% if flash[:errors]%>
+        <%flash[:errors].each do |error|%>
+          <p><%=error%></p>
+        <%end%>
+      <%end%>
+  </div>
 
-  <% if flash[:errors]%>
-      <%flash[:errors].each do |error|%>
-      <p><%=error%></p>
-    <%end%>
-  <%end%>
 
   <h3>Login</h3>
-     <form action='/sessions' method='post'>
-       <input type='hidden' name='authenticity_token' value="<%=form_authenticity_token%>">
-       <div>
-         <label>Email</label>
-         <input type='text' name='user[email]'>
-       </div>
-       <div>
-         <label>Password</label>
-         <input type='password' name='user[password]'>
-       </div>
-       <input type='submit' value='Login'>
-     </form>
-  <p class='errors'><%= flash[:login_error]%>
+  <form action='/sessions' method='post'>
+    <input type='hidden' name='authenticity_token' value="<%=form_authenticity_token%>">
+    <div>
+      <label>Email</label>
+      <input type='text' name='user[email]'>
+    </div>
+    <div>
+      <label>Password</label>
+      <input type='password' name='user[password]'>
+    </div>
+    <input type='submit' value='Login'>
+  </form>
+  <p class='errors'><%= flash[:login_error]%> </p>
+</div>
