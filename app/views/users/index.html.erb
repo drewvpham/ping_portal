@@ -4,9 +4,9 @@
 
 <h2>Recent Public Messages</h2>
 <% @messages.each do |message| %>
-  <p> To: <%= User.where(id: message.recipient_id).first.username %> </p>
+	<p>GOOD To: <%= message.recipient.username %></p>
   <p> <%= message.content %> </p>
-  <p> From: <%= User.where(id: message.user_id).first.username %> </p>
+  <p> From: <%= message.user.username %> </p>
 <% end %>
 
 <a href="/messages">Send a Message</a>
