@@ -1,15 +1,25 @@
-<h1>Hi <%= current_user.username %> </h1>
+<h1>Hi <%=link_to current_user.username, user_path(current_user) %> </h1>
 
 <p>Your Rank:</p>
 
 <h2>Recent Public Messages</h2>
 
 <% @public_messages.each do |message| %>
-	<p>To: <%= message.recipient.username %></p>
 
-  <p> <%= message.content %> </p>
-  <p> From: <%= message.user.username %> </p>
+
+  <h5><%= message.user.username %>:</h5>
+	<p> <%= message.content %> on <%=message.created_at.strftime("%b %e, %l:%M %p")%></p>
 <% end %>
+
+<h3>Post to Public</h3>
+
+   <form action='/messages' method='post'>
+     <input type='hidden' name='authenticity_token' value="<%=form_authenticity_token%>">
+     <div>
+       <textarea rows="4" cols="50" name='message[content]'></textarea>
+     </div>
+     <input type='submit' value='Submit'>
+   </form>
 
 <a href="/messages">Send a Message</a>
 <div></div>
