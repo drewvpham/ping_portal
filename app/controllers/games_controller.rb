@@ -16,6 +16,30 @@ class GamesController < ApplicationController
       end
   end
 
+  def update
+    game = Game.find(params[:id])
+
+    if game_params[:player_1_score] > game_params[:player_2_score]
+      game_params.merge(winner: game.player_1)
+    else
+      game_params.merge(winner: game.player_2)
+    end
+    game.update(game_params)
+    
+
+    if game.valid?
+      redirect_to '/games', notice: 'Thanks for submitting your scores!'
+    else
+      flash[:errors] = game.errors.full_messages
+      redirect_to "/games/#{game.id}"
+    end
+  end
+
+  def show
+    @current_game
+    @player_1 = current_game.player_1.username
+    @player_2 = current_game.player_2.username
+  end
 
 
   private
@@ -23,4 +47,7 @@ class GamesController < ApplicationController
   def game_params
     params.require(:game).permit( :player_1_id, :player_2_id, :player_1_score, :player_2_score, :winner, :time, :location)
   end
-end
+
+  def current_game
+      @game = Game.find(params[:id]).includes(:player_1, :player_2)
+  end
