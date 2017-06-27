@@ -9,7 +9,7 @@ end
 
 def create
   @user= User.create(user_params)
-  if @user.valid?
+  if @user.valid? && params[:invitation] == 'pingpong'
     session[:user_id]=@user.id
     redirect_to users_path
   else
