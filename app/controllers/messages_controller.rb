@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
 
   def index
     @all_messages=Message.all.includes(:user, :recipient)
+    @private_messages=Message.where(user: current_user, private: true).includes(:user, :recipient).or(Message.where(recipient: current_user, private: true).includes(:user, :recipient))
     @users=User.all
     @current_user_id = session[:user_id]
   end

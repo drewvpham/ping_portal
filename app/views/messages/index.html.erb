@@ -4,8 +4,8 @@
 
 <div></div>
   <h3>Your Messages </h3>
-<%@messages.each do |message|%>
-  <p><%=User.find(message.user_id).username%> says <%=message.content%> to <%=User.where(id: message.recipient_id).first.username%> on <%=message.created_at.strftime("%b %e, %l:%M %p")%>
+<%@private_messages.each do |message|%>
+  <p><%=message.user.username%> says <%=message.content%> to <%=message.recipient.username%> on <%=message.created_at.strftime("%b %e, %l:%M %p")%>
     <%= link_to 'Delete',  { action: :destroy, id: message.id }, method: :delete, data: { confirm: 'Are you sure?' } %>
   </p>
 <%end%>
