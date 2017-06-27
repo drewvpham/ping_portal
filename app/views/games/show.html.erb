@@ -1,8 +1,10 @@
-show.html.erb<!-- update the score of the game -->
+<!-- update the score of the game -->
 <h1> <%= @player_1 %> Vs <%= @player_2 %> </h1>
 <p> <%= @current_game.location %> </p>
 <p> <%= @current_game.time %></p>
-
+<p> <%= @current_game.player_1_score %></p>
+<p> <%= @current_game.player_2_score %></p>
+<p> <%= @current_game.winner %></p>
 <h1>Report the score for this game:</h1>
 <!-- game.edit function -->
 <form action="/games/<%= @current_game.id %>" method="post">
@@ -12,5 +14,5 @@ show.html.erb<!-- update the score of the game -->
 		<input type="number" name="game[player_1_score]">
 	<label> <%= @player_2 %> Score</label>
 		<input type="number" name="game[player_2_score]">
-	<input type="submit" value="Submit Score">	
+	<input type="submit" value="Submit Score">
 </form>

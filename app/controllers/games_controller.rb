@@ -20,15 +20,15 @@ class GamesController < ApplicationController
     game = Game.find(params[:id])
 
     if game_params[:player_1_score] > game_params[:player_2_score]
-      game_params.merge(winner: game.player_1)
+      game.update(game_params.merge(winner: game.player_1))
     else
-      game_params.merge(winner: game.player_2)
+      game.update(game_params.merge(winner: game.player_2))
     end
     game.update(game_params)
-    
+
 
     if game.valid?
-      redirect_to '/games', notice: 'Thanks for submitting your scores!'
+      redirect_to :back, notice: 'Thanks for submitting your scores!'
     else
       flash[:errors] = game.errors.full_messages
       redirect_to "/games/#{game.id}"
@@ -36,7 +36,7 @@ class GamesController < ApplicationController
   end
 
   def show
-    @current_game
+    @current_game = Game.find(params[:id])
     @player_1 = current_game.player_1.username
     @player_2 = current_game.player_2.username
   end
@@ -49,5 +49,6 @@ class GamesController < ApplicationController
   end
 
   def current_game
-      @game = Game.find(params[:id]).includes(:player_1, :player_2)
+      @game = Game.find(params[:id])
   end
+end
