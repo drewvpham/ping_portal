@@ -36,9 +36,9 @@ class GamesController < ApplicationController
   end
 
   def show
-    @current_game
-    @player_1 = current_game.player_1.username
-    @player_2 = current_game.player_2.username
+    @game = current_game
+    @player_1 = @game.player_1.username
+    @player_2 = @game.player_2.username
   end
 
 
@@ -49,5 +49,6 @@ class GamesController < ApplicationController
   end
 
   def current_game
-      @game = Game.find(params[:id]).includes(:player_1, :player_2)
+    Game.find(params[:id])
   end
+end
