@@ -28,7 +28,7 @@ class GamesController < ApplicationController
     
 
     if game.valid?
-      redirect_to '/games', notice: 'Thanks for submitting your scores!'
+      redirect_to :back, notice: 'Thanks for submitting your scores!'
     else
       flash[:errors] = game.errors.full_messages
       redirect_to "/games/#{game.id}"
