@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get '/home' => 'users#index'
   post '/sessions' => 'sessions#create'
   get "/home", to: "users#index"
+  get "/games/:id" => "games#show"
+  patch "games/:id" => "games#update"
+  # get "/score/new" => "games#update"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

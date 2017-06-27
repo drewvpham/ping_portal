@@ -4,7 +4,7 @@
 
 <h2>Recent Public Messages</h2>
 <% @messages.each do |message| %>
-	<p>GOOD To: <%= message.recipient.username %></p>
+	<p>To: <%= message.recipient.username %></p>
   <p> <%= message.content %> </p>
   <p> From: <%= message.user.username %> </p>
 <% end %>
