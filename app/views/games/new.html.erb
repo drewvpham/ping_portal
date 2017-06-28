@@ -1,24 +1,37 @@
-
+<nav>
+    <div class="nav-wrapper blue">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/messages">Send a Message</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/sessions/<%= @current_user_id %>" data-method="delete">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
 <h3>Request a Game</h3>
-
-<a href="/">Home</a>
 
 <form  action="/games" method="post">
      <input type='hidden' name='authenticity_token' value="<%=form_authenticity_token%>">
      <input type="hidden" name="game[player_1_id]" value="<%= @user.id %>">
      <label>Who do you want to play against?</label>
      <div>
-     <select name="game[player_2_id]">
-       <%@users.each do |user|%>
-       <%if user.id !=session[:user_id]%>
-      <option value="<%=user.id%>"><%=user.username%></option>
-      <%end%>
-      <%end%>
+     <select class="browser-default" name="game[player_2_id]">
+         <%@users.each do |user|%>
+         <%if user.id !=session[:user_id]%>
+        <option value="<%=user.id%>"><%=user.username%></option>
+        <%end%>
+        <%end%>
+      </select>
       <br>
       <label>What time do you want to play?</label><br>
       <input type="datetime-local" name="game[time]"><br>
       <label>Where do you want to play?</label><br>
-      <input type="radio" name="game[location]" value="dojo" checked> Dojo Game Room<br>
-      <input type="radio" name="game[location]" value="downstairs"> Downstairs Lounge<br>
+      <p>
+        <input name="game[location]" value="dojo" checked type="radio" id="dojo" />
+        <label for="dojo">Dojo Game Room</label>
+      </p>
+      <p>
+        <input id="lounge" name="game[location]" value="downstairs" type="radio"/>
+        <label for="lounge">Downstairs Lounge</label>
+      </p>
       <input type="submit" value="Send your challenge!">
 </form>

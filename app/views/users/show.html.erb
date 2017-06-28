@@ -1,8 +1,15 @@
+<nav>
+    <div class="nav-wrapper blue">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/games/new">Schedule a new game</a></li>
+        <li><a href="/messages">Send a Message</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/sessions/<%= @current_user_id %>" data-method="delete">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
 <%=@user.username%>
-
-
-<a href="/games/new">Schedule a new game</a>
-<a href="/">Home</a>
 
   <%@user.all_games.each do |game|%>
     <p><%=game.player_1.username%> vs <%=game.player_2.username%> @ <%=game.time.strftime('%b %e, %l:%M %p')%></p>
