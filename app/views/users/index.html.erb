@@ -9,14 +9,24 @@
   </nav>
 <h1>Hi <%=link_to current_user.username, user_path(current_user) %> </h1>
 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Wins</th>
+    <th>Points For</th>
+    <th>Points Against</th>
 
-<p>Rankings</p>
-<p>Name:          Wins:        Points For:         Points Against:</p>
+  </tr>
 <%@userranks.each do |user|%>
-	<p><%=user.username%> | <%=user.count_wins %> | <%=user.points_for%> | <%=user.points_against%></p>
+  <tr>
+    <td><%= user.username %></td>
+    <td><%=user.count_wins %></td>
+    <td><%=user.points_for%></td>
+    <td><%=user.points_against%></td>
+  </tr>
 
-<%end%>
-
+  <%end%>
+</table>
 
 
 
