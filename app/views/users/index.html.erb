@@ -2,24 +2,34 @@
 
 <p>Your Rank:</p>
 
-<h2>Recent Public Messages</h2>
+<div>
+	<div class="row">
+		<div class="messages col s6">
+			<h5>Recent Public Messages</h5>
+			<% @public_messages.each do |message| %>
+				<div class ="col s12">
+					<div class="card-panel blue">
+						<h5><%= message.user.username%> on <%=message.created_at.strftime("%b %e, %l:%M %p")%> </h5>
+						<span class="white-text"> <%= message.content %>
+						</span>
+					</div>
+				</div>
+			<% end %>
+		</div>
 
-<% @public_messages.each do |message| %>
+		<div class="col s6">
+			<h3>Post A Public Message</h3>
 
-
-  <h5><%= message.user.username %>:</h5>
-	<p> <%= message.content %> on <%=message.created_at.strftime("%b %e, %l:%M %p")%></p>
-<% end %>
-
-<h3>Post to Public</h3>
-
-   <form action='/messages' method='post'>
-     <input type='hidden' name='authenticity_token' value="<%=form_authenticity_token%>">
-     <div>
-       <textarea rows="4" cols="50" name='message[content]'></textarea>
-     </div>
-     <input type='submit' value='Submit'>
-   </form>
+		   <form action='/messages' method='post'>
+		     <input type='hidden' name='authenticity_token' value="<%=form_authenticity_token%>">
+		     <div>
+		       <textarea rows="4" cols="50" name='message[content]'></textarea>
+		     </div>
+		     <input type='submit' value='Submit'>
+		   </form>
+	   </div>
+	</div>
+</div>
 
 <a href="/messages">Send a Message</a>
 <div></div>
