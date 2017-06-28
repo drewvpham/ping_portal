@@ -1,10 +1,11 @@
 
-  <div class="header">
+  <div class="login_header">
     <h1>Welcome to the Ping Portal!</h1>
   </div>
+<a href="/">Home</a>
 <div>
   <h3>Register</h3>
-  <%= form_tag users_path do %>
+  <form action="/users" method="post">
     <label>Username:</label><br>
     <%= text_field_tag :'user[username]' %><br>
 
@@ -21,7 +22,7 @@
     <input type="password" name="invitation">
 
     <%= submit_tag "Register" %>
-  <% end %>
+  </form>
 
 
   <div class="errors">

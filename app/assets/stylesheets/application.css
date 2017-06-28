@@ -23,3 +23,7 @@
  	background-color: lightgray;
  	overflow: auto;
  }
+
+.messages_nav {
+	margin-bottom: 5%;
+}

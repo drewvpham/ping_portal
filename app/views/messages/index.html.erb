@@ -1,7 +1,12 @@
-
-<%=link_to 'Home', home_path%>
-<a href="/sessions/<%= @current_user_id %>" data-method="delete">Logout</a>
-
+<nav class="messages_nav">
+    <div class="nav-wrapper blue">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/sessions/<%= @current_user_id %>" data-method="delete">Logout</a></li>
+      </ul>
+    </div>
+</nav>
+ 
 <div class="row">
   <div class="messages col s6">
     <h5>Your Private Messages </h5>

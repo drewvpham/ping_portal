@@ -1,4 +1,14 @@
+<nav>
+    <div class="nav-wrapper blue">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/games/new">Schedule a new game</a></li>
+        <li><a href="/messages">Send a Message</a></li>
+        <li><a href="/sessions/<%= @current_user_id %>" data-method="delete">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
 <h1>Hi <%=link_to current_user.username, user_path(current_user) %> </h1>
+
 
 <p>Rankings</p>
 <p>Name:          Wins:        Points For:         Points Against:</p>
@@ -6,6 +16,7 @@
 	<p><%=user.username%> | <%=user.count_wins %> | <%=user.points_for%> | <%=user.points_against%></p>
 
 <%end%>
+
 
 
 
@@ -37,7 +48,3 @@
 	   </div>
 	</div>
 </div>
-
-<a href="/messages">Send a Message</a>
-<div></div>
-<a href="/sessions/<%= @current_user_id %>" data-method="delete">Logout</a>
