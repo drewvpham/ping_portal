@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170627202825) do
+ActiveRecord::Schema.define(version: 20170628162117) do
 
   create_table "games", force: :cascade do |t|
-    t.integer  "player_1_score"
-    t.integer  "player_2_score"
+    t.integer  "player_1_score", default: 0
+    t.integer  "player_2_score", default: 0
     t.datetime "time"
     t.string   "location"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "player_1_id"
     t.integer  "player_2_id"
     t.integer  "winner_id"
@@ -44,12 +44,13 @@ ActiveRecord::Schema.define(version: 20170627202825) do
     t.string   "username"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.integer  "points_for"
-    t.integer  "points_against"
-    t.integer  "wins"
-    t.integer  "losses"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "points_for",      default: 0
+    t.integer  "points_against",  default: 0
+    t.integer  "wins",            default: 0
+    t.integer  "losses",          default: 0
+    t.integer  "wins_count",      default: 0
   end
 
 end

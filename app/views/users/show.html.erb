@@ -1,7 +1,8 @@
 <%=@user.username%>
 
 
-
+<a href="/games/new">Schedule a new game</a>
+<a href="/">Home</a>
 
   <%@user.all_games.each do |game|%>
     <p><%=game.player_1.username%> vs <%=game.player_2.username%> @ <%=game.time.strftime('%b %e, %l:%M %p')%></p>
