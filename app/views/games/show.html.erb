@@ -1,12 +1,5 @@
 <!-- update the score of the game -->
-<<<<<<< HEAD
-<h1> <%= @player_1 %> Vs <%= @player_2 %> </h1>
-<p> <%= @current_game.location %> </p>
-<p> <%= @current_game.time %></p>
-<p> <%= @current_game.player_1_score %></p>
-<p> <%= @current_game.player_2_score %></p>
-<p> <%= @current_game.winner %></p>
-=======
+
 <h1> <%= @game.player_1.username %> Vs <%= @game.player_2.username %> </h1>
 <p> <%= @game.location %> </p>
 <p> <%= @game.time %></p>
@@ -15,8 +8,9 @@
 <% end %>
 <p> <%= @game.player_1_score %></p>
 <p> <%= @game.player_2_score %></p>
+<p>Player 1: <%= @game.player_1.inspect %></p>
+<p>Player 2: <%= @game.player_2.inspect %></p>
 
->>>>>>> ae40bdc3bbd30bad66df07f4b370477c34699c6a
 <h1>Report the score for this game:</h1>
 <!-- game.edit function -->
 <form action="/games/<%= @game.id %>" method="post">
