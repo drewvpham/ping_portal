@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 def index
   @public_messages=Message.where(private: false).includes(:user, :recipient).reverse
   @current_user_id = session[:user_id]
+  @userranks = User.order(wins_count: :desc)
 end
 
 def new

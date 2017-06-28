@@ -1,6 +1,13 @@
 <h1>Hi <%=link_to current_user.username, user_path(current_user) %> </h1>
 
-<p>Your Rank:</p>
+<p>Rankings</p>
+
+<%@userranks.each do |user|%>
+	<p><%=user.username%> | <%=user.wins_count%></p>
+
+<%end%>
+
+
 
 <div>
 	<div class="row">
