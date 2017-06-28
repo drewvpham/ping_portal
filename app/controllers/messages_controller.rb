@@ -16,10 +16,10 @@ class MessagesController < ApplicationController
     @message = Message.create(message_params.merge(user_id: current_user.id))
     if @message.save
       flash[:success] = "Your message has been sent!"
-      redirect_to messages_path
+      redirect_to :back
     else
       flash[:failure] = "Please try again."
-      redirect_to messages_path
+      redirect_to :back
     end
   end
 

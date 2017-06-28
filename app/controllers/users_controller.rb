@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 def index
   @public_messages=Message.where(private: false).includes(:user, :recipient).reverse
   @current_user_id = session[:user_id]
+  @games=Game.all
 end
 
 def new
