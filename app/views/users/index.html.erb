@@ -24,10 +24,6 @@
      <input type='submit' value='Submit'>
    </form>
 
-<h2>Upcoming Games</h2>
-  <%@games.each do |game|%>
-    <%=game.player_1.username%> vs <%=game.player_2.username%> at <%=game.time.strftime('%b %e, %l:%M %p')%>
-
-
-
-  <%end%>
+<a href="/messages">Send a Message</a>
+<div></div>
+<a href="/sessions/<%= @current_user_id %>" data-method="delete">Logout</a>
