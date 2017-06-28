@@ -1,18 +1,31 @@
 <!-- update the score of the game -->
+<nav>
+    <div class="nav-wrapper blue">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/games/new">Schedule a new game</a></li>
+        <li><a href="/messages">Send a Message</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/sessions/<%= @current_user_id %>" data-method="delete">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<h1> <%= @game.player_1.username %> Vs <%= @game.player_2.username %> </h1>
-<p> <%= @game.location %> </p>
-<p> <%= @game.time %></p>
-<% if @game.winner %>
-	<p> winner: <%= @game.winner.username %></p>
-<% end %>
-<p> <%= @game.player_1_score %></p>
-<p> <%= @game.player_2_score %></p>
-<p>Player 1: <%= @game.player_1.inspect %></p>
-<p>Player 2: <%= @game.player_2.inspect %></p>
-<a href="/games/new">Schedule a new game</a>
-<a href="/">Home</a>
-<h1>Report the score for this game:</h1>
+<div class="game_details">
+	<h1> <%= @game.player_1.username %> Vs <%= @game.player_2.username %> </h1>
+	<h5> Location: <%= @game.location %> </h5>
+	<h5> Time: <%= @game.time %></h5>
+	<% if @game.winner %>
+		<p> winner: <%= @game.winner.username %></p>
+	<% end %>
+	<% if @game.player_1_score > 0 %>
+		<p> <%= @game.player_1_score %></p>
+	<%end%>
+	<%if @game.player_2_score > 0%>
+		<p> <%= @game.player_2_score %></p>
+	<%end%>
+<div>
+
+<h3>Report the score for this game:</h3>
 <!-- game.edit function -->
 <form action="/games/<%= @game.id %>" method="post">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">

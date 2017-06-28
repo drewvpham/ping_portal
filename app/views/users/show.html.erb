@@ -9,12 +9,11 @@
     </div>
   </nav>
 
-<%=@user.username%>
-
+<h1> <%=@user.username%>'s games </h1>
+<div>
   <%@user.all_games.each do |game|%>
-    <p><%=game.player_1.username%> vs <%=game.player_2.username%> @ <%=game.time.strftime('%b %e, %l:%M %p')%></p>
-
+  	<i class="person_pin"></i>
+    <a href="/games/<%= game.id %>"><h5 class="games"><%=game.player_1.username%> vs <%=game.player_2.username%> | <%=game.time.strftime('%b %e, %l:%M %p')%> | <%=game.location%></h5>
   <%end%>
+</div>
 
-
-<p class='errors'><%= flash[:login_error]%>
