@@ -1,6 +1,8 @@
 
 <h3>Request a Game</h3>
 
+<a href="/">Home</a>
+
 <form  action="/games" method="post">
      <input type='hidden' name='authenticity_token' value="<%=form_authenticity_token%>">
      <input type="hidden" name="game[player_1_id]" value="<%= @user.id %>">
