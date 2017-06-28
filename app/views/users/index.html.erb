@@ -8,7 +8,17 @@
     </div>
   </nav>
 <h1>Hi <%=link_to current_user.username, user_path(current_user) %> </h1>
-<p>Your Rank:</p>
+
+
+<p>Rankings</p>
+<p>Name:          Wins:        Points For:         Points Against:</p>
+<%@userranks.each do |user|%>
+	<p><%=user.username%> | <%=user.count_wins %> | <%=user.points_for%> | <%=user.points_against%></p>
+
+<%end%>
+
+
+
 
 <div>
 	<div class="row">
