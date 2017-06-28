@@ -9,3 +9,13 @@
 .games {
 	text-align: center;
 }
+
+.leaderboard {
+	height: 200px;
+ 	background-color: lightgray;
+ 	overflow: auto;
+} 
+
+.leaderboard th {
+	color: rgb(33, 150, 243);;
+}
